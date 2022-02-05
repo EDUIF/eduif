@@ -1,0 +1,159 @@
+@mixin typeColor($color) {
+  color: #ffffff;
+  background-color: $color;
+}
+
+.ed-button {
+  color: #333333;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 6px 12px;
+  user-select: none;
+  display: inline-block;
+  border-radius: .25rem;
+  transition: color .15s;
+  background-color: #ffffff;
+  border: 1px solid $color-border;
+
+  & + & {
+    margin-left: 4px;
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+  }
+
+  &.is-round {
+    border-radius: 1.5em;
+  }
+
+  &-- {
+    &large {
+      font-size: 18px;
+      padding: 8px 16px;
+    }
+
+    &small {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+
+    &default {
+      &:active,
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary;
+        background-color: mix($color-primary, white, 15%);
+      }
+
+      &.is-disabled {
+        &:active,
+        &:hover {
+          color: #333333;
+          background-color: #ffffff;
+          border-color: $color-border;
+        }
+      }
+
+      &.is-plain {
+        &:active,
+        &:hover {
+          background: none;
+        }
+      }
+    }
+
+    &text {
+      padding: 0;
+      border-width: 0;
+      background: none;
+      color: $color-primary;
+
+      &:hover,
+      &:active {
+        color: mix(black, $color-primary, 20%);
+      }
+
+      &.is-disabled {
+        color: #c0c4cc;
+      }
+    }
+  }
+
+  @each $key, $val in (
+          'primary':$color-primary,
+          'success':$color-success,
+          'warning':$color-warning,
+          'danger':$color-danger,
+          'info':$color-info
+  ) {
+    &--#{$key} {
+      color: #ffffff;
+      border-color: $val;
+      background-color: $val;
+
+      &:hover,
+      &:active {
+        background-color: mix($val, white, 75%);
+      }
+
+      &.is-disabled {
+        cursor: not-allowed;
+        border-color: mix($val, white, 50%);
+        background-color: mix($val, white, 50%);
+      }
+
+      &.is-plain {
+        color: $val;
+        background-color: mix($val, white, 20%);
+
+        &:hover,
+        &:active {
+          color: #ffffff;
+          background-color: $val;
+        }
+
+        &.is-disabled {
+          border-color: mix($val, white, 50%);
+          color: mix(black, mix($val, white, 80%), 10%);
+          background-color: mix(black, mix($val, white, 10%), 5%);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * =========================================================
+ * 自动适应主题模式 明亮|深色
+ * =========================================================
+ */
+//.ed-theme__ {
+//  &light .ed-button {
+//    background-color: #ffffff;
+//  }
+//
+//  &dark .ed-button {
+//    color: #ffffff;
+//    border-color: #5c636a;
+//    background-color: #5c636a;
+//  }
+//}
+
+//@media(prefers-color-scheme: light) {
+//  .ed-theme--auth {
+//    .ed-button {
+//      background-color: #{$theme-color-light};
+//    }
+//  }
+//}
+//
+//@media(prefers-color-scheme: dark) {
+//  .ed-theme--auth {
+//    .ed-button {
+//      background-color: #{$theme-color-light};
+//    }
+//  }
+//}

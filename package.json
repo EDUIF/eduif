@@ -1,5 +1,5 @@
 {
-  "name": "eduif-vue",
+  "name": "eduif",
   "version": "0.0.1",
   "private": false,
   "description": "Easy Design User Interface Framework Vue",
@@ -31,9 +31,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --dist lib --target lib --name eduif src/index.js",
-    "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit",
+    "inspect": "vue-cli-service inspect --mode production",
+    "build:lib": "vue-cli-service build --mode production --target lib  --modern --dashboard --name eduif ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "peerDependencies": {
@@ -54,9 +55,18 @@
     "chai": "^4.1.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^10.2.0",
     "vue-template-compiler": "^2.6.11"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }

@@ -1,25 +1,28 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { resolve } = require('path');
 
 module.exports = {
   publicPath: './',
   lintOnSave: true,
-  configureWebpack: config => {
-    config.optimization.minimizer = [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            warnings: false,
-            drop_console: true, //console
-            drop_debugger: true,
-            pure_funcs: ['console.log'], //移除console
-          },
-        },
-      }),
-    ];
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'eduif': resolve('./src'),
+        '@style': resolve('./src/scss'),
+        '@utils': resolve('./src/utils'),
+        '@package': resolve('./package'),
+      },
+    },
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "~@style/base-var.scss";`,
+      },
+    },
   },
   pages: {
     index: {
-      title: 'EDUIF',
+      title: 'eduif',
       filename: 'index.html',
       entry: 'examples/main.js',
       template: 'examples/index.html',

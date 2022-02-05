@@ -1,8 +1,12 @@
-const components = [];
+import EdInput from '@package/Input';
+import EdButton from '@package/Button';
+
+const components = [EdInput, EdButton];
 
 const install = function(Vue, config) {
+  config = config || {};
   Vue.prototype.$ELEMENT = {
-    size: config.size || '',
+    size: config.size || 'normal',
     zIndex: config.zIndex || 2000,
   };
   components.forEach(component => {

@@ -1,0 +1,40 @@
+@mixin theme-light($important: '') {
+  color: var(--theme-text-light, $theme-text-color-light)#{$important};
+  background-color: var(--theme-light, $theme-color-light)#{$important};
+}
+
+@mixin theme-dark($important: '') {
+  color: var(--theme-text-dark, $theme-text-color-dark)#{$important};
+  background-color: var(--theme-dark, $theme-color-dark)#{$important};
+}
+
+.ed-theme {
+  @include theme-light;
+
+  &.ed-theme__ {
+    &light {
+      @include theme-light;
+    }
+
+    &dark {
+      @include theme-dark;
+    }
+  }
+}
+
+/**
+ * =========================================================
+ * 自动适应主题模式 明亮|深色
+ * =========================================================
+ */
+@media(prefers-color-scheme: light) {
+  .ed-theme.ed-theme--auth {
+    @include theme-light(' !important');
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  .ed-theme.ed-theme--auth {
+    @include theme-dark(' !important');
+  }
+}

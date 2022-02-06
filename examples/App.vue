@@ -10,19 +10,30 @@
           <ed-button v-for="(item,key) in buttonTypeList" :key="`type-${key}`" :type="item">{{ item }}</ed-button>
         </div>
         <div style="padding-top: 5px;">
+          <h3>disabled</h3>
           <ed-button v-for="(item,key) in buttonTypeList" :key="`type-${key}-plain`" :type="item" disabled>{{ item }}</ed-button>
         </div>
         <div style="padding-top: 5px;">
-          <ed-button v-for="(item,key) in buttonTypeList" :key="`type-${key}-plain`" :type="item" plain>{{ item }}</ed-button>
+          <h3>plain</h3>
+          <ed-button v-for="(item,key) in [ 'primary', 'success', 'warning', 'danger', 'info']" :key="`type-${key}-plain`" :type="item" plain>{{ item }}</ed-button>
         </div>
         <div style="padding-top: 5px;">
-          <ed-button v-for="(item,key) in buttonTypeList" :key="`type-${key}-plain`" :type="item" plain disabled>{{ item }}</ed-button>
+          <ed-button v-for="(item,key) in [ 'primary', 'success', 'warning', 'danger', 'info']" :key="`type-${key}-plain`" :type="item" plain disabled>{{ item }}</ed-button>
         </div>
       </div>
       <div class="">
         <h3>Size</h3>
         <ed-button v-for="(item,key) in buttonSizeList" :key="`size-${key}`" :size="item">{{ item }}</ed-button>
-        <ed-button v-for="(item,key) in buttonSizeList" :key="`size-${key}`" :size="item" round>{{ item }}</ed-button>
+        <div>
+          <h3>round</h3>
+          <ed-button v-for="(item,key) in buttonSizeList" :key="`size-${key}-round`" :size="item" round>{{ item }}</ed-button>
+        </div>
+      </div>
+      <div class="">
+        <h3>Group</h3>
+        <ed-button-group>
+          <ed-button v-for="(item,key) in ['default', 'primary', 'success', 'warning', 'danger', 'info']" :key="`type-${key}-group`" :type="item">{{ item }}</ed-button>
+        </ed-button-group>
       </div>
     </div>
   </div>

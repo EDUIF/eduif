@@ -1,7 +1,8 @@
 import EdInput from '@package/Input';
 import EdButton from '@package/Button';
+import EdButtonGroup from '@package/ButtonGroup';
 
-const components = [EdInput, EdButton];
+const components = [EdInput, EdButton, EdButtonGroup];
 
 const install = function(Vue, config) {
   config = config || {};

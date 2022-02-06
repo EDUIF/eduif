@@ -1,20 +1,14 @@
-@mixin typeColor($color) {
-  color: #ffffff;
-  background-color: $color;
-}
-
 .ed-button {
-  color: #333333;
   cursor: pointer;
-  font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
   padding: 6px 12px;
   user-select: none;
+  border-radius: 6px;
   display: inline-block;
-  border-radius: .25rem;
   transition: color .15s;
   background-color: #ffffff;
+  color: $theme-text-color-light;
   border: 1px solid $color-border;
 
   & + & {
@@ -40,120 +34,140 @@
       padding: 4px 8px;
     }
 
-    &default {
-      &:active,
-      &:hover {
-        color: $color-primary;
-        border-color: $color-primary;
-        background-color: mix($color-primary, white, 15%);
-      }
+  }
+}
 
-      &.is-disabled {
-        &:active,
-        &:hover {
-          color: #333333;
-          background-color: #ffffff;
-          border-color: $color-border;
-        }
-      }
+.ed-button-group {
+  display: inline-block;
+  vertical-align: middle;
 
-      &.is-plain {
-        &:active,
-        &:hover {
-          background: none;
-        }
-      }
+  .ed-button {
+    margin: 0;
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
     }
 
-    &text {
-      padding: 0;
-      border-width: 0;
-      background: none;
-      color: $color-primary;
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-      &:hover,
-      &:active {
-        color: mix(black, $color-primary, 20%);
-      }
-
-      &.is-disabled {
-        color: #c0c4cc;
-      }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
+}
 
-  @each $key, $val in (
-          'primary':$color-primary,
-          'success':$color-success,
-          'warning':$color-warning,
-          'danger':$color-danger,
-          'info':$color-info
-  ) {
-    &--#{$key} {
-      color: #ffffff;
-      border-color: $val;
-      background-color: $val;
+.ed-button--text {
+  padding: 0;
+  border-width: 0;
+  background: none;
+  color: $color-primary;
 
-      &:hover,
-      &:active {
-        background-color: mix($val, white, 75%);
-      }
+  &:active,
+  &:hover {
+    color: mix($color-primary, #fff, 70%);
+  }
+
+  &.is-disabled {
+    color: $color-info;
+  }
+}
+
+@mixin buttonColorHover($text,$border,$background) {
+  &:active,
+  &:hover {
+    color: $text;
+    border-color: $border;
+    background-color: $background;
+  }
+}
+
+@mixin ed-button--default {
+  .ed-button--default {
+    background-color: #ffffff;
+    border-color: $color-border;
+    color: $theme-text-color-light;
+    @include buttonColorHover($color-primary, $color-primary, mix(#fff, $color-primary, 90%));
+
+    &.is-disabled {
+      background-color: #ffffff;
+      border-color: $color-border;
+      color: $theme-text-color-light;
+    }
+
+    &.is-plain {
+      background-color: #ffffff;
+      border-color: $color-border;
+      color: $theme-text-color-light;
 
       &.is-disabled {
-        cursor: not-allowed;
-        border-color: mix($val, white, 50%);
-        background-color: mix($val, white, 50%);
-      }
-
-      &.is-plain {
-        color: $val;
-        background-color: mix($val, white, 20%);
-
-        &:hover,
-        &:active {
-          color: #ffffff;
-          background-color: $val;
-        }
-
-        &.is-disabled {
-          border-color: mix($val, white, 50%);
-          color: mix(black, mix($val, white, 80%), 10%);
-          background-color: mix(black, mix($val, white, 10%), 5%);
-        }
+        background-color: #ffffff;
+        border-color: $color-border;
+        color: $theme-text-color-light;
       }
     }
   }
 }
+
+@include ed-button--default;
+
+$color-weight: 15%;
+@mixin buttonColorDisabled($text,$border,$background) {
+  &.is-disabled {
+    color: mix(#333, $text, $color-weight);
+    border-color: mix(#333, $border, $color-weight);
+    background-color: mix(#333, $background, $color-weight);
+  }
+}
+
+@mixin buttonColor($name,$color) {
+  $text: #fff;
+  .ed-button--#{$name} {
+    color: $text;
+    border-color: $color;
+    background-color: $color;
+    @include buttonColorHover($text, $color, mix(#fff, $color, $color-weight));
+
+    @include buttonColorDisabled($text, $color, $color);
+
+    $plain-border: $color;
+    $plain-background: mix(#fff, $color, 75%);
+
+    &.is-plain {
+      color: $color;
+      border-color: $plain-border;
+      background-color: $plain-background;
+      @include buttonColorHover($text, $color, $plain-border);
+      @include buttonColorDisabled($color, $plain-border, $plain-background);
+    }
+  }
+}
+
+@each $key, $val in ('primary':$color-primary, 'success':$color-success, 'warning':$color-warning, 'danger':$color-danger, 'info':$color-info) {
+  @include buttonColor($key, $val)
+}
+
 
 /**
  * =========================================================
  * 自动适应主题模式 明亮|深色
  * =========================================================
  */
-//.ed-theme__ {
-//  &light .ed-button {
-//    background-color: #ffffff;
-//  }
-//
-//  &dark .ed-button {
-//    color: #ffffff;
-//    border-color: #5c636a;
-//    background-color: #5c636a;
-//  }
-//}
+.ed-theme__dark {
+  @include buttonColor('default', mix($theme-color-dark, #fff, 80%));
+}
 
-//@media(prefers-color-scheme: light) {
-//  .ed-theme--auth {
-//    .ed-button {
-//      background-color: #{$theme-color-light};
-//    }
-//  }
-//}
-//
-//@media(prefers-color-scheme: dark) {
-//  .ed-theme--auth {
-//    .ed-button {
-//      background-color: #{$theme-color-light};
-//    }
-//  }
-//}
+@media(prefers-color-scheme: light) {
+  .ed-theme--auth {
+    @include ed-button--default;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  .ed-theme--auth {
+    @include buttonColor('default', mix($theme-color-dark, #fff, 80%));
+  }
+}

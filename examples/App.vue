@@ -33,7 +33,9 @@
         <h3>Group</h3>
         <ed-button-group>
           <ed-button v-for="(item,key) in ['default', 'primary', 'success', 'warning', 'danger', 'info']" :key="`type-${key}-group`" :type="item">{{ item }}</ed-button>
+          <ed-button v-for="(item,key) in ['primary', 'success', 'warning', 'danger', 'info']" :key="`type-${key}-group-plain`" :type="item" plain>{{ item }}</ed-button>
         </ed-button-group>
+        <h3>Group</h3>
       </div>
     </div>
   </div>

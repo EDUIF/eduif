@@ -34,7 +34,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "inspect": "vue-cli-service inspect --mode production",
-    "build:lib": "vue-cli-service build --mode production --target lib  --modern --dashboard --name eduif ./src/index.js",
+    "build:lib": "vue-cli-service build --dest lib --mode production --target lib  --modern --dashboard --name eduif ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "peerDependencies": {
@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -57,7 +58,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^10.2.0",
+    "sass-loader": "^10.2.1",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {

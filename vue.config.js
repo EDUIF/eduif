@@ -1,8 +1,8 @@
 const { resolve } = require('path');
 
 module.exports = {
-  publicPath: './',
   lintOnSave: true,
+  productionSourceMap: false,
   configureWebpack: {
     resolve: {
       alias: {
@@ -10,6 +10,7 @@ module.exports = {
         '@style': resolve('./src/scss'),
         '@utils': resolve('./src/utils'),
         '@package': resolve('./package'),
+        '@views': resolve('./examples'),
       },
     },
   },

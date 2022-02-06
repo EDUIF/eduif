@@ -1,5 +1,5 @@
 <template>
-  <button class="ed-button" :class="classes" :disabled="disabled">
+  <button class="ed-button" :type="nativeType" :class="classes" :disabled="disabled" @click="handleClick">
     <span v-if="$slots.default"><slot /></span>
   </button>
 </template>
@@ -10,11 +10,12 @@ export default {
   name: 'EdButton',
   inject: { formItem: { default: '' } },
   props: {
-    type: { type: String, default: 'default' },
     size: String,
     plain: Boolean,
     round: Boolean,
     disabled: Boolean,
+    type: { type: String, default: 'default' },
+    nativeType: { type: String, default: 'button' },
   },
   computed: {
     _formItemSize () {
@@ -32,6 +33,11 @@ export default {
         'is-disabled': this.disabled,
       });
       return classes;
+    },
+  },
+  methods: {
+    handleClick (event) {
+      this.$emit('click', event);
     },
   },
 };

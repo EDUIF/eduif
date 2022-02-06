@@ -5,8 +5,5 @@
 <script>
 export default {
   name: 'Button',
-  data: function() {
-    return {};
-  },
 };
 </script>

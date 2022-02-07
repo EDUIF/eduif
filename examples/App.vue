@@ -2,7 +2,7 @@
   <div class="App">
     <ed-button @click="onRouterPush('/')">首页</ed-button>
     <ed-button @click="onRouterPush('/package')">组件</ed-button>
-    <router-view key="App"/>
+    <router-view key="App" />
   </div>
 </template>
 
@@ -16,3 +16,9 @@ export default {
   },
 };
 </script>
+
+<style>
+body {
+  background-color: #f2f4f8;
+}
+</style>

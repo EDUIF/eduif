@@ -22,7 +22,7 @@ export default {
       return ((this.formItem && this.formItem()) || {}).size;
     },
     _size () {
-      return this.size || this._formItemSize || this.$ELEMENT.size;
+      return this.size || this._formItemSize || this.$EDMENT.size;
     },
     classes () {
       const classes = ['ed-button--' + this._size];

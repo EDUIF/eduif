@@ -1,4 +1,5 @@
 export const packageRouter = [
+  'Icon',
   'Alerts',
   'Button',
 ].map(name => {

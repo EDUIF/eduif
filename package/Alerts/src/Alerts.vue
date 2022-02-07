@@ -1,5 +1,6 @@
 <template>
-  <div class="ed-alerts">
+  <div class="ed-alerts" :class="classes" :style="{zIndex: _zIndex}">
+    <i class="ed-alerts__icon" v-if="showIcon && iconsName" :class="iconsName"></i>
     <div class="ed-alerts__content">
       <div class="ed-alerts__title" v-if="title || $slots.title">
         <slot name="title"><span>{{ title }}</span></slot>
@@ -8,15 +9,54 @@
         <slot>{{ description }}</slot>
       </div>
     </div>
+    <i class="ed-alerts__close ed-x" v-if="showClose" @click="handleClose"></i>
   </div>
 </template>
 
 <script>
+const TYPE_ICON = {
+  'success': 'ed-check-circle',
+  'warning': 'ed-error-circle',
+  'danger': 'ed-x-circle',
+  'info': 'ed-help-circle',
+};
 export default {
   name: 'EdAlerts',
   props: {
     title: String,
+    plain: Boolean,
+    zIndex: Number,
+    iconName: String,
+    showIcon: Boolean,
+    showClose: Boolean,
     description: String,
+    type: { type: String, default: 'default' },
+  },
+  computed: {
+    iconsName () {
+      return TYPE_ICON[this.type] || this.iconName;
+    },
+    classes () {
+      const classes = [`ed-alerts--${this.type}`];
+      classes.push({
+        'is-plain': this.plain,
+        'is-icon': this.showIcon && this.iconsName,
+      });
+      return classes;
+    },
+    _zIndex () {
+      return this.zIndex;
+    },
+  },
+  methods: {
+    handleClose (event) {
+      this.$emit('close', event);
+      this.close();
+    },
+    close () {
+      // 自我销毁
+      this.$el.remove();
+    },
   },
 };
 </script>

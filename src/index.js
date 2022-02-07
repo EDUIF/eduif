@@ -1,18 +1,21 @@
-import EdIcon from '@package/Icon';
+import EdIcon, { IconsName } from '@package/Icon';
 import EdInput from '@package/Input';
+import EDAlerts from '@package/Alerts';
 import EdButton from '@package/Button';
 import EdButtonGroup from '@package/ButtonGroup';
 
 const components = [
   EdIcon,
   EdInput,
+  EDAlerts,
   EdButton,
   EdButtonGroup,
 ];
 
 const install = function(Vue, config) {
   config = config || {};
-  Vue.prototype.$ELEMENT = {
+  Vue.prototype.$EDMENT = {
+    IconsName,
     size: config.size || 'normal',
     zIndex: config.zIndex || 2000,
   };
@@ -28,5 +31,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   version: '0.0.1',
+  IconsName,
   install,
 };

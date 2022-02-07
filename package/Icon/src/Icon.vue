@@ -1,14 +1,12 @@
 <template>
-  <i class="ed-icon" :class="name ? `ed-icon-${name}` : ''"></i>
+  <i :class="name ? `ed-${name}` : ''"></i>
 </template>
 
 <script>
 export default {
   name: 'EdIcon',
   props: {
-    props: {
-      name: { type: String, required: true },
-    },
+    name: { type: String, required: true },
   },
 };
 </script>

@@ -1,7 +1,7 @@
-import EdInput from './src/Input.vue';
+import Models from './src/index.vue';
 
-EdInput.install = function(Vue) {
-  Vue.component(EdInput.name, EdInput);
+Models.install = function(vue) {
+  vue.component(Models.name, Models);
 };
 
-export default EdInput;
+export default Models;

@@ -1,9 +1,9 @@
-import EdIcon from './src/Icon.vue';
+import Models from './src/index.vue';
 import * as IconsName from './src/IconsName';
 
 export * as IconsName from './src/IconsName';
 
-EdIcon.install = function(Vue) {
+Models.install = function(Vue) {
   /**
    * ===========================================================================
    *  注入到配置文件
@@ -11,7 +11,7 @@ EdIcon.install = function(Vue) {
    */
   if (!Vue.prototype.$EDMENT) Vue.prototype.$EDMENT = {};
   Vue.prototype.$EDMENT.IconsName = IconsName;
-  Vue.component(EdIcon.name, EdIcon);
+  Vue.component(Models.name, Models);
 };
 
-export default EdIcon;
+export default Models;

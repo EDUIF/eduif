@@ -1,7 +1,7 @@
-import EdButtonGroup from '../Button/src/ButtonGroup.vue';
+import Models from './src/index.vue';
 
-EdButtonGroup.install = function(Vue) {
-  Vue.component(EdButtonGroup.name, EdButtonGroup);
+Models.install = function(vue) {
+  vue.component(Models.name, Models);
 };
 
-export default EdButtonGroup;
+export default Models;

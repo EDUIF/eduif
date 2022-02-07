@@ -1,15 +1,15 @@
 <template>
-  <div class="ed-alerts" :class="classes" :style="{zIndex: _zIndex}">
-    <i class="ed-alerts__icon" v-if="showIcon && iconsName" :class="iconsName"></i>
-    <div class="ed-alerts__content">
-      <div class="ed-alerts__title" v-if="title || $slots.title">
+  <div class="ed-alert" :class="classes" :style="{zIndex: _zIndex}">
+    <i class="ed-alert__icon" v-if="showIcon && iconsName" :class="iconsName"></i>
+    <div class="ed-alert__content">
+      <div class="ed-alert__title" v-if="title || $slots.title">
         <slot name="title"><span>{{ title }}</span></slot>
       </div>
-      <div class="ed-alerts__description" v-if="description || $slots.default">
+      <div class="ed-alert__description" v-if="description || $slots.default">
         <slot>{{ description }}</slot>
       </div>
     </div>
-    <i class="ed-alerts__close ed-x" v-if="showClose" @click="handleClose"></i>
+    <i class="ed-alert__close ed-x" v-if="showClose" @click="handleClose"></i>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ const TYPE_ICON = {
   'info': 'ed-help-circle',
 };
 export default {
-  name: 'EdAlerts',
+  name: 'EdAlert',
   props: {
     title: String,
     plain: Boolean,
@@ -37,7 +37,7 @@ export default {
       return TYPE_ICON[this.type] || this.iconName;
     },
     classes () {
-      const classes = [`ed-alerts--${this.type}`];
+      const classes = [`ed-alert--${this.type}`];
       classes.push({
         'is-plain': this.plain,
         'is-icon': this.showIcon && this.iconsName,

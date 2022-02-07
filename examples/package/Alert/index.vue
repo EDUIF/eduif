@@ -2,7 +2,7 @@
   <div>
     <h3>alert</h3>
     <ed-alert>alert in default</ed-alert>
-    <ed-alert title="Title">alert in default</ed-alert>
+    <ed-alert title="Title" icon-name="ed-icon-x" show-icon>alert in default</ed-alert>
     <ed-alert title="Title" type="success">alert in default</ed-alert>
     <ed-alert title="Title" type="success" plain>alert in default</ed-alert>
     <ed-alert title="Title" type="success" plain show-icon>alert in default</ed-alert>

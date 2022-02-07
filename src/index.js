@@ -3,6 +3,8 @@ import EdInput from '@package/Input';
 import EDAlert from '@package/Alert';
 import EdButton from '@package/Button';
 import EdButtonGroup from '@package/ButtonGroup';
+import EdCollapse from '@package/Collapse';
+import EdCollapseItem from '@package/CollapseItem';
 
 const components = [
   EdIcon,
@@ -10,6 +12,8 @@ const components = [
   EDAlert,
   EdButton,
   EdButtonGroup,
+  EdCollapse,
+  EdCollapseItem,
 ];
 
 const install = function(Vue, config) {
@@ -20,7 +24,6 @@ const install = function(Vue, config) {
     zIndex: config.zIndex || 2000,
   };
   components.forEach(component => {
-    console.log(component.name)
     Vue.component(component.name, component);
   });
 };

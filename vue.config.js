@@ -8,9 +8,10 @@ module.exports = {
       alias: {
         'eduif': resolve('./src'),
         '@style': resolve('./src/scss'),
+        '@views': resolve('./examples'),
         '@utils': resolve('./src/utils'),
         '@package': resolve('./package'),
-        '@views': resolve('./examples'),
+        '@transition': resolve('./src/transition'),
       },
     },
   },

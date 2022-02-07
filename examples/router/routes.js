@@ -2,6 +2,7 @@ export const packageRouter = [
   'Icon',
   'Alert',
   'Button',
+  'Collapse'
 ].map(name => {
   return { name, path: name.toLocaleLowerCase(), component: () => import(`@views/package/${name}/index.vue`) };
 });

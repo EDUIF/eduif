@@ -7,7 +7,7 @@
         <div class="icons-list" v-for="(item, key) in icons" :key="key">
           <ed-icon :name="item" style="font-size: 30px;"></ed-icon>
           <div class="icons-list-span">
-            <span>ed-{{ item }}</span>
+            <span>ed-icon-{{ item }}</span>
           </div>
         </div>
       </div>

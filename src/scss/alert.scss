@@ -15,7 +15,7 @@
   &__close {
     width: 20px;
     height: 20px;
-    flex: 0 0 20px;
+    flex: 0 0 auto;
     font-size: 20px;
     line-height: 20px;
   }
@@ -30,8 +30,9 @@
   }
 
   &__title {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
+    line-height: 30px;
   }
 
   &__close {
@@ -40,6 +41,11 @@
 
   &.is-icon {
     padding-left: 8px;
+  }
+  &.is-title .ed-alert__icon{
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <i :class="name ? `ed-${name}` : ''"></i>
+  <i :class="name ? `ed-icon-${name}` : ''"></i>
 </template>
 
 <script>

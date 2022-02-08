@@ -35,7 +35,7 @@
         <h3>卡片 手风琴</h3>
         <ed-collapse card accordion>
           <ed-collapse-item label="Title A" name="A">
-            <ed-collapse card accordion>
+            <ed-collapse accordion>
               <ed-collapse-item label="Title A" name="A">collapse A</ed-collapse-item>
               <ed-collapse-item label="Title B" name="B">collapse B</ed-collapse-item>
               <ed-collapse-item label="Title C" name="C">collapse C</ed-collapse-item>

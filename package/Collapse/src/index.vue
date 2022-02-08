@@ -33,10 +33,6 @@ export default {
     this.$on('item-click', this.handleItemClick);
   },
   methods: {
-    setActiveName (activeNames) {
-      const value = this.accordion ? activeNames[0] : activeNames;
-      this.$emit('change', value);
-    },
     handleItemClick (name) {
       const index = this.activeNames.indexOf(name);
       if (index >= 0) {
@@ -45,7 +41,7 @@ export default {
         if (this.accordion) this.activeNames = [];
         this.activeNames.push(name);
       }
-      this.setActiveName(this.activeNames);
+      this.$emit('change', [].concat(this.accordion ? this.activeNames[0] : this.activeNames));
     },
   },
 };

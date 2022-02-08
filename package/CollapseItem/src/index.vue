@@ -35,9 +35,6 @@ export default {
     },
   },
   methods: {
-    transitionComplete (dom) {
-      console.log(dom);
-    },
     handleClick () {
       this.dispatch('EdCollapse', 'item-click', this.name);
     },

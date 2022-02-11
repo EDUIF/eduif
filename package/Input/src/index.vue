@@ -2,7 +2,6 @@
   <div class="ed-input" :class="{
     'is-suffix': prefixIcon,
     'is-prefix': suffixIcon,
-    'is-disabled': disabled,
     'is-group--append': $slots.append,
     'is-group--prepend': $slots.prepend,
     'is-group': $slots.prepend || $slots.append,
@@ -10,7 +9,10 @@
     <div class="ed-input__prepend" v-if="$slots.prepend">
       <slot name="prepend"></slot>
     </div>
-    <div class="ed-input__inner" :class="{'is-focus': hasFocus}" @click.stop="focus">
+    <div class="ed-input__inner" :class="{
+      'is-focus': hasFocus,
+      'is-disabled': disabled,
+    }" @click.stop="focus">
       <div class="ed-input__prefix" v-if="prefixIcon">
         <i class="ed-input__prefix--icon" :class="prefixIcon" />
       </div>
@@ -22,12 +24,14 @@
         @input="handleInput"
         @focus="handleFocus"
         @change="handleChange"
-        :type="showPassword && passwordVisible  ? 'text' : type"
+        :disabled="disabled"
+        :readonly="readonly"
+        :type="showPassword ?(passwordVisible ? 'text' : 'password') : type"
       />
       <div class="ed-input__suffix" v-if="suffixIcon || showClearable || showPassword">
         <i class="ed-input__icon ed-icon-x-circle" v-if="showClearable" style="cursor: pointer" @click="handleClearableClick" />
         <i class="ed-input__icon" v-if="suffixIcon" :class="suffixIcon" />
-        <i class="ed-input__icon" v-if="showPassword" :class="'ed-icon-' + (passwordVisible ? 'hide' : 'show')" style="cursor: pointer" @click="handlePasswordVisible" />
+        <i class="ed-input__icon" v-if="showPassword && !disabled" :class="'ed-icon-' + (passwordVisible ? 'hide' : 'show')" style="cursor: pointer" @click.stop="handlePasswordVisible" />
       </div>
     </div>
     <div class="ed-input__append" v-if="$slots.append">
@@ -71,14 +75,16 @@ export default {
       return this.value ? String(this.value) : '';
     },
     showClearable () {
-      return this.clearable && this.hover && this.inputValue;
+      return this.clearable && this.hover && this.inputValue && !this.disabled;
     },
   },
   methods: {
     focus () {
+      if (!this.disabled) this.hasFocus = true;
       this.getInput.focus();
     },
     blur () {
+      this.hasFocus = false;
       this.getInput.blur();
     },
     handleFocus (event) {

@@ -7,11 +7,11 @@
     <ed-input v-model="value" type="password"></ed-input>
     <ed-input v-model="value" type="password" show-password clearable></ed-input>
     <ed-input v-model="value" placeholder="请输入" prefix-icon="ed-icon-x" suffix-icon="ed-icon-home"></ed-input>
-    <ed-input v-model="value" placeholder="请输入" prefix-icon="ed-icon-x" suffix-icon="ed-icon-home">
+    <ed-input v-model="value" placeholder="请输入" prefix-icon="ed-icon-x" suffix-icon="ed-icon-home" readonly>
       <template slot="append">append</template>
       <template slot="prepend">prepend</template>
     </ed-input>
-    <ed-input v-model="value" placeholder="请输入" prefix-icon="ed-icon-x" suffix-icon="ed-icon-home" clearable>
+    <ed-input v-model="value" placeholder="请输入" prefix-icon="ed-icon-x" suffix-icon="ed-icon-home" clearable disabled>
       <template slot="append">append</template>
       <template slot="prepend">prepend</template>
     </ed-input>

@@ -12,7 +12,7 @@
     line-height: 28px;
     border-style: solid;
     box-sizing: border-box;
-    background-color: #e9ecef;
+    background-color: #f2f4f8;
     border-color: $color-border;
   }
 
@@ -50,6 +50,11 @@
     }
   }
 
+  &__prefix,
+  &__suffix {
+    color: #51678f;
+  }
+
   &__suffix > i + i {
     margin-left: 5px;
   }
@@ -76,6 +81,16 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  &__inner {
+    &.is-focus {
+      border-color: $color-primary;
+    }
+
+    &.is-disabled {
+      background-color: #f2f4f8;
     }
   }
 }

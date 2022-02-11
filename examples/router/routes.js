@@ -2,6 +2,7 @@ export const packageRouter = [
   'Icon',
   'Card',
   'Alert',
+  'Input',
   'Button',
   'Collapse',
   'Breadcrumb',

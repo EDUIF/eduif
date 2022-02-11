@@ -18,7 +18,7 @@
   border: 1px solid $color-border;
 
   & + & {
-    margin-left: 4px;
+    margin-left: 8px;
   }
 
   &.is-disabled {

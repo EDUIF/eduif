@@ -22,7 +22,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
-          # token: ${{ secrets.Actions_Token }}
-          # repository-name: "EDUIF/eduif.github.io"
+          token: ${{ secrets.Actions_Token }}
+          repository-name: "EDUIF/eduif.github.io"
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.

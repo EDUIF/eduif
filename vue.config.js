@@ -30,6 +30,12 @@ module.exports = {
       entry: 'examples/main.js',
       template: 'examples/index.html',
     },
+    '404': {
+      title: 'eduif',
+      filename: '404.html',
+      entry: 'examples/main.js',
+      template: 'examples/404.html',
+    },
   },
   devServer: {
     port: 8083,

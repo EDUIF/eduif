@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 
 module.exports = {
-  publicPath: '/',
+  publicPath: '/eduif/',
   lintOnSave: true,
   productionSourceMap: false,
   configureWebpack: {

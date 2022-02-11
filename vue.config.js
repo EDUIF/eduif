@@ -1,7 +1,6 @@
 const { resolve } = require('path');
 
 module.exports = {
-  baseUrl: '/',
   publicPath: '/',
   lintOnSave: true,
   productionSourceMap: false,

@@ -1,0 +1,73 @@
+/**
+ * =========================================================
+ * Alert 警告
+ * =========================================================
+ */
+
+.ed-alert {
+  display: flex;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid $color-border;
+
+  &__icon,
+  &__close {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    line-height: 20px;
+  }
+
+  &__title {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+
+  &.is-icon {
+    padding-left: 8px;
+  }
+  &.is-title .ed-alert__icon{
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+}
+
+@mixin alertColor($name,$color) {
+  $text: #fff;
+  .ed-alert--#{$name} {
+    color: $text;
+    border-color: $color;
+    background-color: $color;
+
+    $plain-border: $color;
+    $plain-background: mix(#fff, $color, 75%);
+
+    &.is-plain {
+      color: $color;
+      border-color: $plain-border;
+      background-color: $plain-background;
+    }
+  }
+}
+
+@each $key, $val in ('success':$color-success, 'warning':$color-warning, 'danger':$color-danger, 'info':$color-info) {
+  @include alertColor($key, $val)
+}

@@ -5,6 +5,8 @@ import EdButton from '@package/Button';
 import EdButtonGroup from '@package/ButtonGroup';
 import EdCollapse from '@package/Collapse';
 import EdCollapseItem from '@package/CollapseItem';
+import EdBreadcrumb from '@package/Breadcrumb';
+import EdBreadcrumbItem from '@package/BreadcrumbItem';
 
 const components = [
   EdIcon,
@@ -14,6 +16,8 @@ const components = [
   EdButtonGroup,
   EdCollapse,
   EdCollapseItem,
+  EdBreadcrumb,
+  EdBreadcrumbItem,
 ];
 
 const install = function(Vue, config) {

@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import EdCollapseItem from '@package/CollapseItem/src';
-import EdCollapse from '@package/Collapse/src';
+import EdCollapseItem from '@package/CollapseItem';
+import EdCollapse from '@package/Collapse';
 
 export default {
   name: 'Collapse',

@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     isActive () {
-      return (this.activeNames && this.activeNames()).indexOf(this.name) >= 0;
+      return (this['activeNames'] && this['activeNames']()).indexOf(this.name) >= 0;
     },
   },
   methods: {

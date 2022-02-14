@@ -5,6 +5,7 @@ export const packageRouter = [
   'Input',
   'Button',
   'Collapse',
+  'Progress',
   'Breadcrumb',
 ].map(name => {
   return { name, path: name.toLocaleLowerCase(), component: () => import(`@views/package/${name}/index.vue`) };

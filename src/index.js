@@ -5,6 +5,7 @@ import EdButton from '@package/Button';
 import EdButtonGroup from '@package/ButtonGroup';
 import EdCollapse from '@package/Collapse';
 import EdCollapseItem from '@package/CollapseItem';
+import EdProgress from '@package/Progress';
 import EdBreadcrumb from '@package/Breadcrumb';
 import EdBreadcrumbItem from '@package/BreadcrumbItem';
 
@@ -16,6 +17,7 @@ const components = [
   EdButtonGroup,
   EdCollapse,
   EdCollapseItem,
+  EdProgress,
   EdBreadcrumb,
   EdBreadcrumbItem,
 ];

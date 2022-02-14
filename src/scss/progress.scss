@@ -1,0 +1,48 @@
+.ed-progress {
+  width: 100%;
+  height: 4px;
+  vertical-align: middle;
+  background-color: #ebeef5;
+
+  &__inner {
+    height: 4px;
+    overflow: hidden;
+    transition-timing-function: ease-in-out;
+    transition: width .3s, background-color .1s;
+
+    &--text {
+      margin: 0 4px;
+      color: #ffffff;
+      font-size: 12px;
+      text-align: right;
+      line-height: 20px;
+    }
+  }
+
+  &.is-label {
+    height: 20px;
+    border-radius: 4px;
+
+    .ed-progress__inner {
+      height: 20px;
+      border-radius: 4px;
+    }
+  }
+
+  &.is-striped {
+    > .ed-progress__inner {
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+      background-size: 1rem 1rem;
+    }
+
+    &.is-striped--animated > .ed-progress__inner {
+      animation: 1s linear infinite progress-bar-stripes;
+    }
+  }
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position-x: 1rem
+  }
+}
